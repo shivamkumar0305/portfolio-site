@@ -48,8 +48,12 @@ export function Contact() {
         });
         setFormData({ name: "", email: "", message: "" });
 
-        if (typeof window !== "undefined" && (window as any).va) {
-          (window as any).va.track("contact_submission", { status: "success" });
+        try {
+          if (typeof window !== "undefined" && (window as any).va) {
+            (window as any).va.track("contact_submission", { status: "success" });
+          }
+        } catch (trackErr) {
+          console.warn("Analytics tracking failed:", trackErr);
         }
       } else {
         const errorMsg = data.errors ? data.errors.map((err: any) => err.message).join(" ") : (data.error || "An error occurred.");
@@ -57,8 +61,12 @@ export function Contact() {
           type: "error",
           message: errorMsg
         });
-        if (typeof window !== "undefined" && (window as any).va) {
-          (window as any).va.track("contact_submission", { status: "error" });
+        try {
+          if (typeof window !== "undefined" && (window as any).va) {
+            (window as any).va.track("contact_submission", { status: "error" });
+          }
+        } catch (trackErr) {
+          console.warn("Analytics tracking failed:", trackErr);
         }
       }
     } catch (err) {
@@ -132,8 +140,12 @@ export function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group border-b border-stone-850 pb-4 last:border-0 last:pb-0"
                   onClick={() => {
-                    if (typeof window !== "undefined" && (window as any).va) {
-                      (window as any).va.track(`${method.name}_click`);
+                    try {
+                      if (typeof window !== "undefined" && (window as any).va) {
+                        (window as any).va.track(`${method.name}_click`);
+                      }
+                    } catch (trackErr) {
+                      console.warn("Analytics tracking failed:", trackErr);
                     }
                   }}
                 >
