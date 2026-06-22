@@ -44,7 +44,7 @@ export async function POST(request: Request) {
         `;
         
         const count = results[0]?.count || 0;
-        if (count >= 5) {
+        if (count >= 50) {
           isRateLimited = true;
         }
       }
