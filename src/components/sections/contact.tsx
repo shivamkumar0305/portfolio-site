@@ -27,6 +27,18 @@ export function Contact() {
         body: JSON.stringify(formData)
       });
 
+      // Handle non-JSON HTML error responses (like 404 or 500 pages) gracefully
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await res.text();
+        console.error("Non-JSON response received:", text);
+        setStatus({
+          type: "error",
+          message: `Server returned an error (${res.status}). Please check your Vercel logs.`
+        });
+        return;
+      }
+
       const data = await res.json();
 
       if (res.ok && data.success) {
@@ -50,6 +62,7 @@ export function Contact() {
         }
       }
     } catch (err) {
+      console.error("Fetch request error:", err);
       setStatus({
         type: "error",
         message: "Failed to connect to the server. Please check your connection and try again."
