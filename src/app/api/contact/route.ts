@@ -79,7 +79,7 @@ export async function POST(request: Request) {
     if (process.env.RESEND_API_KEY && process.env.CONTACT_RECIPIENT_EMAIL) {
       try {
         await resend.emails.send({
-          from: "Portfolio Contact <onboarding@resend.dev>",
+          from: "onboarding@resend.dev",
           to: process.env.CONTACT_RECIPIENT_EMAIL,
           subject: `Portfolio message from ${name}`,
           text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nSender IP: ${ip}`
