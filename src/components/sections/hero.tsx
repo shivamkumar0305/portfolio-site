@@ -45,30 +45,31 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-[#0c0a09] pt-24 pb-12">
+    <section className="relative flex min-h-[75vh] sm:min-h-[90vh] items-center justify-center overflow-hidden bg-[#0c0a09] pt-16 pb-8 sm:pt-24 sm:pb-12">
       <div className="mx-auto max-w-5xl px-6 sm:px-8 w-full">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-center">
           
           {/* Main Headline & CTAs (Left) */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* Status Badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-stone-800 bg-[#0c0a09] px-3 py-1 text-[9px] font-mono uppercase tracking-wider text-stone-400">
+            <div className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border border-stone-850 bg-[#0c0a09] px-3 py-1 text-[9px] font-mono uppercase tracking-wider text-stone-400">
               <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               available for internships
             </div>
 
             {/* Huge Serif Headline */}
-            <h1 className="text-5xl font-serif font-light italic tracking-tight text-[#f5f5f4] sm:text-7xl leading-tight">
+            <h1 className="text-4xl sm:text-7xl font-serif font-light italic tracking-tight text-[#f5f5f4] leading-tight">
               software engineer.
             </h1>
             
             {/* Subheadline */}
-            <p className="mt-6 max-w-lg text-sm text-stone-300 leading-relaxed">
-              Final-year engineering student building production-ready backend architectures. Specialized in high-throughput APIs, cache clusters, database tuning, and automation tools.
+            <p className="mt-4 sm:mt-6 max-w-lg text-xs sm:text-sm text-stone-300 leading-relaxed">
+              <span className="hidden sm:inline">Final-year engineering student building production-ready backend architectures. Specialized in high-throughput APIs, cache clusters, database tuning, and automation tools.</span>
+              <span className="inline sm:hidden">Building production-ready backend architectures and automated pipelines.</span>
             </p>
 
             {/* CTAs */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
               <Button
                 size="default"
                 onClick={() => handleScrollTo("#projects")}
@@ -92,7 +93,7 @@ export function Hero() {
           </div>
 
           {/* Simulated Backend CLI Telemetry (Right) */}
-          <div className="lg:col-span-5 w-full">
+          <div className="lg:col-span-5 w-full hidden lg:block">
             <div className="rounded-xl border border-stone-850/60 bg-[#0c0a09] p-5 font-mono text-[10px] text-stone-400 shadow-xl shadow-black/10">
               <div className="flex items-center justify-between border-b border-stone-900 pb-3 mb-4">
                 <div className="flex gap-1.5">

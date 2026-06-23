@@ -7,44 +7,44 @@ import { ArchitectureCanvas } from "../architecture-canvas";
 
 export function FeaturedProjects() {
   return (
-    <section id="projects" className="relative bg-[#0c0a09] py-10 border-t border-stone-900">
+    <section id="projects" className="relative bg-[#0c0a09] py-6 sm:py-10 border-t border-stone-900">
       <div className="mx-auto max-w-5xl px-6 sm:px-8">
         
         {/* Header */}
-        <div className="max-w-3xl mb-12">
-          <h2 className="text-3xl font-serif font-light italic text-white tracking-tight sm:text-4xl">
+        <div className="max-w-3xl mb-6 sm:mb-12">
+          <h2 className="text-2xl sm:text-4xl font-serif font-light italic text-white tracking-tight">
             selected projects.
           </h2>
-          <p className="mt-4 text-xs text-stone-300 max-w-md leading-relaxed">
+          <p className="mt-4 text-xs text-stone-300 max-w-md leading-relaxed hidden sm:block">
             Real systems built with a focus on latency optimization, database execution, and clean code paths.
           </p>
         </div>
 
         {/* Projects Stream */}
-        <div className="space-y-16">
+        <div className="space-y-10 sm:space-y-16">
           {projects.map((project, index) => (
             <div 
               key={project.id} 
-              className="flex flex-col gap-8 border-t border-stone-900/60 pt-10 first:border-t-0 first:pt-0"
+              className="flex flex-col gap-4 sm:gap-8 border-t border-stone-900/60 pt-6 sm:pt-10 first:border-t-0 first:pt-0"
             >
               {/* Header Info */}
               <div className="max-w-3xl">
-                <div className="flex items-center gap-2 text-[9px] font-mono uppercase tracking-widest text-stone-400 mb-3 font-bold">
+                <div className="flex items-center gap-2 text-[9px] font-mono uppercase tracking-widest text-stone-400 mb-2 sm:mb-3 font-bold">
                   <Code2 className="h-3 w-3 text-orange-550" />
                   project 0{index + 1} / case study
                 </div>
                 
-                <h3 className="text-2xl font-serif font-medium text-white tracking-tight sm:text-3xl">
+                <h3 className="text-xl sm:text-3xl font-serif font-medium text-white tracking-tight">
                   {project.name}
                 </h3>
                 
-                <p className="mt-4 text-xs text-stone-300 leading-relaxed">
+                <p className="mt-2 sm:mt-4 text-xs text-stone-300 leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
               {/* Problem vs Solution Split View */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-stone-900/40 pb-8">
+              <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-stone-900/40 pb-8">
                 <div>
                   <span className="text-[8px] font-mono uppercase tracking-wider text-red-400/90 block font-bold">the problem</span>
                   <p className="text-[11px] text-stone-300 mt-2 leading-relaxed">{project.problem}</p>
@@ -56,7 +56,7 @@ export function FeaturedProjects() {
               </div>
 
               {/* Topology & Stack block */}
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4 sm:gap-6">
                 {/* SVG canvas */}
                 <div className="w-full overflow-x-auto">
                   <ArchitectureCanvas
@@ -67,7 +67,7 @@ export function FeaturedProjects() {
                 </div>
 
                 {/* Stack & Links */}
-                <div className="flex flex-wrap items-center justify-between gap-4 mt-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mt-1 sm:mt-2">
                   <div className="flex flex-wrap gap-1.5">
                     {project.stack.map((tech) => (
                       <span

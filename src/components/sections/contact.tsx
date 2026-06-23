@@ -118,20 +118,20 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative bg-[#0c0a09] py-16 border-t border-stone-900">
+    <section id="contact" className="relative bg-[#0c0a09] py-10 sm:py-16 border-t border-stone-900">
       <div className="mx-auto max-w-5xl px-6 sm:px-8">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-16">
+        <div className="grid grid-cols-1 gap-8 sm:gap-16 lg:grid-cols-12">
 
           {/* Methods Column */}
           <div className="lg:col-span-5 flex flex-col justify-start">
-            <h2 className="text-3xl font-serif font-light italic text-white tracking-tight sm:text-4xl">
+            <h2 className="text-2xl sm:text-4xl font-serif font-light italic text-white tracking-tight">
               conversation.
             </h2>
-            <p className="mt-4 text-xs text-stone-300 leading-relaxed max-w-sm">
+            <p className="mt-4 text-xs text-stone-300 leading-relaxed max-w-sm hidden sm:block">
               Let's coordinate internship inquiries, project specifications, or collaboration details.
             </p>
 
-            <div className="mt-12 space-y-6">
+            <div className="mt-12 space-y-6 hidden sm:block">
               {contactMethods.map((method) => (
                 <a
                   key={method.name}
@@ -161,11 +161,35 @@ export function Contact() {
                 </a>
               ))}
             </div>
+
+            <div className="mt-6 flex justify-start gap-4 sm:hidden">
+              {contactMethods.map((method) => (
+                <a
+                  key={method.name}
+                  href={method.href}
+                  target={method.name !== "email" ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded bg-[#0c0a09] border border-stone-850 text-stone-400 hover:text-white hover:border-stone-700 transition-all duration-200"
+                  title={method.name}
+                  onClick={() => {
+                    try {
+                      if (typeof window !== "undefined" && (window as any).va) {
+                        (window as any).va.track(`${method.name}_click`);
+                      }
+                    } catch (trackErr) {
+                      console.warn("Analytics tracking failed:", trackErr);
+                    }
+                  }}
+                >
+                  {method.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Form Column */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-8">
               <div className="flex flex-col">
                 <label htmlFor="name" className="text-[9px] font-mono text-stone-400 uppercase tracking-widest block mb-2 font-bold">
                   your name
